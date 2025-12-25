@@ -1,8 +1,8 @@
 # Reframe: Civic Infrastructure V3.5 - Prototype Documentation
 
-## Project Vision: Atelier-re
+## Project Vision: a:RE reframe
 
-**Atelier-re** is a research initiative rethinking city planning through data-driven placemaking. Rather than accepting traditional transportation metrics (ridership, on-time performance, vehicle counts), Atelier-re asks: **"What if we measured cities by how well they serve human needs?"**
+**a:RE reframe** is a research initiative of Atelier-re.com. Civic Infrastructure V3.5 is a rethinking city planning through data-driven placemaking. Rather than accepting traditional transportation metrics (ridership, on-time performance, vehicle counts), Atelier-re asks: **"What if we measured cities by how well they serve human needs?"**
 
 This prototype demonstrates a fundamental shift in urban analytics—from infrastructure-centric to **people-centric** metrics. By reframing transit data through the lens of healthcare access, student safety, shift worker mobility, and neighborhood vitality, we reveal what truly matters: **how infrastructure shapes daily life**.
 
