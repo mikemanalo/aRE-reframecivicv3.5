@@ -1,0 +1,56 @@
+{
+    "healthcare_accessibility": {
+        "title": "Healthcare Accessibility Velocity",
+        "value": 17.69,
+        "unit": "MPH (Off-Peak)",
+        "description": "Average speed of routes serving healthcare and senior centers during off-peak hours.",
+        "top_routes": [
+            {
+                "route_name": "Express Service ? Montclair Transit Center ? Fairplex Park & Ride ? Downtown Los Angeles",
+                "agency": "City of Duarte",
+                "speed_mph": 33.7968458
+            },
+            {
+                "route_name": "Warner Center",
+                "agency": "City of Santa Clarita",
+                "speed_mph": 31.96135184
+            },
+            {
+                "route_name": "Warner Center",
+                "agency": "City of Santa Clarita",
+                "speed_mph": 30.85920069
+            },
+            {
+                "route_name": "Express Service ? Montclair Transit Center ? Fairplex Park & Ride ? Downtown Los Angeles",
+                "agency": "City of Duarte",
+                "speed_mph": 30.6651487
+            },
+            {
+                "route_name": "Express Service ? Grand Ave. Park & Ride ? Covina Transit Center ? Downtown Los Angeles",
+                "agency": "City of Duarte",
+                "speed_mph": 28.64856785
+            }
+        ]
+    },
+    "safe_passage": {
+        "title": "Safe Passage Reliability",
+        "value": 5.87,
+        "unit": "MPH Variability",
+        "description": "Standard deviation of speeds on school routes during peak hours. Lower means more consistent service.",
+        "avg_speed": 14.59
+    },
+    "community_connection": {
+        "title": "24-Hour Connection Rate",
+        "value": 99.4,
+        "unit": "%",
+        "description": "Percentage of routes with consistent speeds (<5 MPH difference) between peak and all-day service.",
+        "avg_diff": 0.56
+    },
+    "petunia_index": {
+        "title": "The \"Petunia\" Index",
+        "value": 11.96,
+        "unit": "MPH (Local Loops)",
+        "description": "Average speed of short-distance local circulator routes.",
+        "threshold_meters": 16599.37
+    }
+}

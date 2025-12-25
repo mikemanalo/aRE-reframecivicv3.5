@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reframe: Civic Infrastructure V3.5</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <link rel="stylesheet" href="placemaking_v35.css">
+</head>
+
+<body>
+    <div class="grid-background"></div>
+
+    <header>
+        <div class="logo">atelier-re</div>
+        <nav>
+            <a href="#">ABOUT</a>
+            <a href="#">CONTACT</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Reframe: <span class="highlight">Civic</span><br>Infrastructure</h1>
+            <p class="subtitle">Transforming transit data into community-centric placemaking metrics.</p>
+
+            <!-- District Selector -->
+            <div style="margin-top: 2rem;">
+                <label for="district-select"
+                    style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--text-secondary);">Select
+                    District:</label>
+                <select id="district-select"
+                    style="padding: 0.75rem 1rem; font-size: 1rem; border: 2px solid var(--accent-cyan-start); background: var(--bg-card); color: var(--text-primary); border-radius: 8px; cursor: pointer; min-width: 300px;">
+                    <option value="">Loading districts...</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- Dashboard Grid: Widgets on left (2x2), Map on right -->
+        <section class="dashboard-container">
+            <div class="widgets-grid">
+                <!-- KPI 1: Healthcare -->
+                <div class="widget card" id="widget-healthcare">
+                    <div class="card-deco circle-gradient-1"></div>
+                    <h3>Healthcare Accessibility</h3>
+                    <div class="metric-value" id="healthcare-value">--</div>
+                    <div class="metric-unit" id="healthcare-unit">MPH</div>
+                    <p class="description" id="healthcare-desc">Loading...</p>
+                    <div class="extra-data" id="healthcare-extra"></div>
+                </div>
+
+                <!-- KPI 2: Safe Passage -->
+                <div class="widget card" id="widget-safe-passage">
+                    <div class="card-deco shape-flower"></div>
+                    <h3>Safe Passage Reliability</h3>
+                    <div class="metric-value" id="safe-passage-value">--</div>
+                    <div class="metric-unit" id="safe-passage-unit">Variability</div>
+                    <p class="description" id="safe-passage-desc">Loading...</p>
+                    <div class="extra-data" id="safe-passage-extra"></div>
+                </div>
+
+                <!-- KPI 3: Connection Rate -->
+                <div class="widget card" id="widget-connection">
+                    <div class="card-deco circle-solid"></div>
+                    <h3>24-Hour Connection</h3>
+                    <div class="metric-value" id="connection-value">--</div>
+                    <div class="metric-unit" id="connection-unit">%</div>
+                    <p class="description" id="connection-desc">Loading...</p>
+                    <div class="extra-data" id="connection-extra"></div>
+                </div>
+
+                <!-- KPI 4: Petunia Index -->
+                <div class="widget card" id="widget-petunia">
+                    <div class="card-deco shape-arch"></div>
+                    <h3>The "Petunia" Index</h3>
+                    <div class="metric-value" id="petunia-value">--</div>
+                    <div class="metric-unit" id="petunia-unit">MPH</div>
+                    <p class="description" id="petunia-desc">Loading...</p>
+                    <div class="extra-data" id="petunia-extra"></div>
+                </div>
+            </div>
+
+            <!-- Map Section (50% width) -->
+            <div class="map-container card">
+                <div id="map"></div>
+                <div class="map-overlay" id="map-overlay">
+                    <h4>Route Visualization</h4>
+                    <p>Select a district to view transit data.</p>
+                    <div id="map-legend" style="margin-top: 1rem; font-size: 0.85rem; display: none;">
+                        <div style="margin-bottom: 0.5rem; font-weight: bold;">Route Speeds:</div>
+                        <div style="display: flex; flex-direction: column; gap: 0.25rem;">
+                            <div><span
+                                    style="display: inline-block; width: 20px; height: 2px; background: #00ff88; margin-right: 0.5rem;"></span>
+                                Fast (>15 mph)</div>
+                            <div><span
+                                    style="display: inline-block; width: 20px; height: 2px; background: #ffd700; margin-right: 0.5rem;"></span>
+                                Medium (10-15 mph)</div>
+                            <div><span
+                                    style="display: inline-block; width: 20px; height: 2px; background: #ff6b6b; margin-right: 0.5rem;"></span>
+                                Slow (<10 mph)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+        <!-- Widget Explanations Section -->
+        <section class="explanations-section card">
+            <h2>Metric Explanations</h2>
+
+            <div class="explanation-item">
+                <h3>Healthcare Accessibility Velocity</h3>
+                <p><strong>Calculation:</strong> Average speed (MPH) of transit routes serving healthcare facilities
+                    during off-peak hours. Routes are identified by keywords: "Medical", "Hospital", "Health", "Senior",
+                    "Clinic".</p>
+                <p><strong>Why it matters:</strong> Faster healthcare access during off-peak hours ensures seniors and
+                    patients can reach medical facilities efficiently when traffic is lighter.</p>
+                <p><strong>Data Source:</strong> California Department of Transportation (Caltrans) Average Transit
+                    Speeds by Route dataset.</p>
+            </div>
+
+            <div class="explanation-item">
+                <h3>Safe Passage Reliability</h3>
+                <p><strong>Calculation:</strong> Standard deviation of speeds on school-serving routes during peak
+                    hours. Routes identified by keywords: "School", "University", "College", "Campus". Lower values
+                    indicate more consistent service.</p>
+                <p><strong>Why it matters:</strong> Consistent transit speeds ensure students arrive on time. High
+                    variability suggests unreliable service that can impact educational outcomes.</p>
+                <p><strong>Data Source:</strong> California Department of Transportation (Caltrans) Average Transit
+                    Speeds by Route dataset.</p>
+            </div>
+
+            <div class="explanation-item">
+                <h3>24-Hour Connection Rate</h3>
+                <p><strong>Calculation:</strong> Percentage of routes where the speed difference between peak and
+                    off-peak periods is less than 5 MPH, indicating consistent all-day service.</p>
+                <p><strong>Why it matters:</strong> High connection rates mean transit is reliable throughout the day,
+                    supporting shift workers, late-night activities, and flexible schedules.</p>
+                <p><strong>Data Source:</strong> California Department of Transportation (Caltrans) Average Transit
+                    Speeds by Route dataset.</p>
+            </div>
+
+            <div class="explanation-item">
+                <h3>The "Petunia" Index</h3>
+                <p><strong>Calculation:</strong> Average speed of short-distance local circulator routes (routes with
+                    Shape_Length < 0.15 degrees, approximately 10 miles).</p>
+                        <p><strong>Why it matters:</strong> Named for neighborhood-scale transit, this metric reflects
+                            the quality of local circulation that connects residents to nearby amenities, parks, and
+                            community centers.</p>
+                        <p><strong>Data Source:</strong> California Department of Transportation (Caltrans) Average
+                            Transit Speeds by Route dataset.</p>
+            </div>
+
+            <div class="data-reference">
+                <h3>Data References</h3>
+                <ul>
+                    <li><strong>Primary Source:</strong> California Department of Transportation (Caltrans) - Average
+                        Transit Speeds by Route dataset</li>
+                    <li><strong>Methodology:</strong> Metrics calculated using Python scripts analyzing GeoJSON route
+                        data with speed, time period, and route name attributes</li>
+                    <li><strong>Update Frequency:</strong> Data reflects the most recent Caltrans transit speed
+                        measurements</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="data/kpi_data_all_districts.js"></script>
+    <script src="data/districts/district_index.js"></script>
+    <script src="placemaking_v35.js"></script>
+</body>
+
+</html>

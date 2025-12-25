@@ -1,0 +1,14 @@
+{
+  "01 - Eureka": "data/districts/01_eureka.geojson",
+  "02 - Redding": "data/districts/02_redding.geojson",
+  "03 - Marysville": "data/districts/03_marysville.geojson",
+  "04 - Oakland": "data/districts/04_oakland.geojson",
+  "05 - San Luis Obispo": "data/districts/05_san_luis_obispo.geojson",
+  "06 - Fresno": "data/districts/06_fresno.geojson",
+  "07 - Los Angeles": "data/districts/07_los_angeles.geojson",
+  "08 - San Bernardino": "data/districts/08_san_bernardino.geojson",
+  "09 - Bishop": "data/districts/09_bishop.geojson",
+  "10 - Stockton": "data/districts/10_stockton.geojson",
+  "11 - San Diego": "data/districts/11_san_diego.geojson",
+  "12 - Irvine": "data/districts/12_irvine.geojson"
+}

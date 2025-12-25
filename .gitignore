@@ -1,0 +1,7 @@
+dashboard/data/district_routes.js
+CALProcure/Average_Transit_Speeds_by_Route.geojson
+CALProcure/Average_Transit_Speeds_by_Route.kml
+CALProcure/Average_Transit_Speeds_by_Route_Time_of_Day.csv
+.DS_Store
+dashboard/data/districts/07_los_angeles.js
+dashboard/data/districts/04_oakland.js

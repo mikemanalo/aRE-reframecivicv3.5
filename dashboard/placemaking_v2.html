@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reframe: Civic Infrastructure V2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <link rel="stylesheet" href="placemaking.css">
+</head>
+
+<body>
+    <div class="grid-background"></div>
+
+    <header>
+        <div class="logo">atelier-re</div>
+        <nav>
+            <a href="#">ABOUT</a>
+            <a href="#">CONTACT</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Reframe: <span class="highlight">Civic</span><br>Infrastructure</h1>
+            <p class="subtitle">Transforming transit data into community-centric placemaking metrics.</p>
+
+            <!-- District Selector -->
+            <div style="margin-top: 2rem;">
+                <label for="district-select"
+                    style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--text-secondary);">Select
+                    District:</label>
+                <select id="district-select"
+                    style="padding: 0.75rem 1rem; font-size: 1rem; border: 2px solid var(--accent-cyan-start); background: var(--bg-card); color: var(--text-primary); border-radius: 8px; cursor: pointer; min-width: 300px;">
+                    <option value="">Loading districts...</option>
+                </select>
+            </div>
+        </section>
+
+        <section class="dashboard-grid">
+            <!-- KPI 1: Healthcare -->
+            <div class="widget card" id="widget-healthcare">
+                <div class="card-deco circle-gradient-1"></div>
+                <h3>Healthcare Accessibility</h3>
+                <div class="metric-value" id="healthcare-value">--</div>
+                <div class="metric-unit" id="healthcare-unit">MPH</div>
+                <p class="description" id="healthcare-desc">Loading...</p>
+                <div class="extra-data" id="healthcare-extra"></div>
+            </div>
+
+            <!-- KPI 2: Safe Passage -->
+            <div class="widget card" id="widget-safe-passage">
+                <div class="card-deco shape-flower"></div>
+                <h3>Safe Passage Reliability</h3>
+                <div class="metric-value" id="safe-passage-value">--</div>
+                <div class="metric-unit" id="safe-passage-unit">Variability</div>
+                <p class="description" id="safe-passage-desc">Loading...</p>
+                <div class="extra-data" id="safe-passage-extra"></div>
+            </div>
+
+            <!-- KPI 3: Connection Rate -->
+            <div class="widget card" id="widget-connection">
+                <div class="card-deco circle-solid"></div>
+                <h3>24-Hour Connection</h3>
+                <div class="metric-value" id="connection-value">--</div>
+                <div class="metric-unit" id="connection-unit">%</div>
+                <p class="description" id="connection-desc">Loading...</p>
+                <div class="extra-data" id="connection-extra"></div>
+            </div>
+
+            <!-- KPI 4: Petunia Index -->
+            <div class="widget card" id="widget-petunia">
+                <div class="card-deco shape-arch"></div>
+                <h3>The "Petunia" Index</h3>
+                <div class="metric-value" id="petunia-value">--</div>
+                <div class="metric-unit" id="petunia-unit">MPH</div>
+                <p class="description" id="petunia-desc">Loading...</p>
+                <div class="extra-data" id="petunia-extra"></div>
+            </div>
+
+            <!-- Map Section -->
+            <div class="map-container card">
+                <div id="map"></div>
+                <div class="map-overlay">
+                    <h4>Route Visualization</h4>
+                    <p>Select a district to view transit data.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="data/kpi_data_all_districts.js"></script>
+    <script src="placemaking_v2.js"></script>
+</body>
+
+</html>
